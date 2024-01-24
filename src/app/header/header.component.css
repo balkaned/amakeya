@@ -1,0 +1,99 @@
+body {
+	font-family: sans-serif;
+	margin: 0;
+}
+
+header {
+	background: rgb(5, 26, 56);
+	background: -webkit-linear-gradient(left, rgb(5, 26, 56) 0%, rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
+	background: -o-linear-gradient(left, rgb(5, 26, 56) 0%,rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
+	background: linear-gradient(to right, rgb(5, 26, 56) 0%, rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=1 );
+	width: auto;
+}		
+
+#btn-menu {
+	display: none;
+}
+
+header label {
+	display: none;
+	width: 30px;
+	height: 30px;
+	padding: 10px;
+	border-right: 1px solid #fff;	
+}
+
+header label:hover {
+	background: rgba(0,0,0,0.3);
+	cursor: pointer;
+}
+
+/* main {
+	text-align: justify;
+	padding: 20px;
+	
+} */
+
+/* main h2 {
+	text-align: center;
+} */
+.menu ul {
+	display: flex;
+	flex-direction: row;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	/*justify-content: center;*/
+}
+.menu li {
+	border-right: 1px solid #fff;
+	/*text-align: center;
+	flex-glow: 1;*/ 
+}
+.menu li:hover {
+	background: rgba(0,0,0,0.3);
+}
+
+.menu li a {
+	color: #fff;
+	display: block;
+	text-decoration: none;
+	padding: 15px 20px;
+}
+
+@media (max-width:768px) {
+	
+	header label {
+		display: block;
+
+	}
+
+	.menu {
+		background: rgb(5, 26, 56);
+	    background: -webkit-linear-gradient(left, rgb(5, 26, 56) 0%, rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
+	    background: -o-linear-gradient(left, rgb(5, 26, 56) 0%,rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
+	    background: linear-gradient(to right, rgb(5, 26, 56) 0%, rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=1 );
+		margin-left: -70%;
+		position: absolute;		
+		width: 70%;
+    -webkit-transition: all 0ms cubic-bezier(0.005, 0.355, 0.000, 1); /* older webkit */
+		-webkit-transition: all 0ms cubic-bezier(0.005, 0.355, 0.000, 1.065); 
+    -moz-transition: all 0ms cubic-bezier(0.005, 0.355, 0.000, 1.065); 
+    -o-transition: all 0ms cubic-bezier(0.005, 0.355, 0.000, 1.065); 
+    transition: all 0ms cubic-bezier(0.005, 0.355, 0.000, 1.065);
+	}
+
+	.menu ul {
+		flex-direction: column;
+	}
+
+	.menu li {
+		border-top: 1px solid #fff;
+	}
+
+	#btn-menu:checked ~ .menu {
+		margin: 0;
+	}
+}
