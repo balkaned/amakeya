@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
+import { ApiServicePostulante } from 'src/app/services/api.service.postulante';
+import { ApiServiceUbigeo } from 'src/app/services/api.service.ubigeo';
 
 @Component({
   selector: 'app-postulante',
@@ -7,6 +9,9 @@ import { FormBuilder, Validators} from '@angular/forms';
   styleUrls: ['./postulante.component.css']
 })
 export class PostulanteComponent implements OnInit {
+
+data: any[] = [];
+dataDepartamentos: any[] = [];
 
 tipo:string='Postulante';
 
@@ -66,9 +71,15 @@ Cargos:any= ['Gerente', 'Programador', 'Otros'];
   
  })
 
-  constructor(private fb:FormBuilder){}
+  constructor(
+    private fb:FormBuilder,
+    private apiServicePostulante: ApiServicePostulante,
+    private apiServiceUbigeo: ApiServiceUbigeo
+    ){}
 
   ngOnInit(): void {
+    this.listarPostulantes();
+    this.listarDepartamentos();
   }
 
   get apellidopaternoValido(){
@@ -463,18 +474,11 @@ Cargos:any= ['Gerente', 'Programador', 'Otros'];
     return this.forma.get('descripcion3')?.invalid && this.forma.get('descripcion3')?.touched
   }
 
-  
-
-
-
   guardar(){
-
     if(this.forma.invalid){
-
       return Object.values(this.forma.controls).forEach(control=>{
         control.markAsTouched();
       })
-
     }
  
     console.log(this.forma.value);
@@ -505,6 +509,20 @@ Cargos:any= ['Gerente', 'Programador', 'Otros'];
 
   seleccionarCargo3(evento:any){
     this.cargos3?.setValue(evento.target.value, {onlyself:true})
+  }
+
+  listarPostulantes(){
+    this.apiServicePostulante.listarPostulante().subscribe(data =>{
+      this.data=data;
+      console.log("data: "+this.data);
+    })
+  }
+
+  listarDepartamentos(){
+    this.apiServiceUbigeo.listarPostulante().subscribe(data=>{
+      this.dataDepartamentos=data;
+      console.log("datadepartamentos: "+this.dataDepartamentos);
+    })
   }
 
 }

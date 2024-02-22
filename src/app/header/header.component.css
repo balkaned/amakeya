@@ -1,7 +1,7 @@
-body {
+/*body {
 	font-family: sans-serif;
 	margin: 0;
-}
+}*/
 
 header {
 	background: rgb(5, 26, 56);
@@ -10,13 +10,13 @@ header {
 	background: linear-gradient(to right, rgb(5, 26, 56) 0%, rgb(5, 26, 56) 44%, rgb(5, 26, 56) 100%);
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a90329', endColorstr='#6d0019', GradientType=1 );
 	width: auto;
-}		
+}
 
 #btn-menu {
 	display: none;
 }
 
-header label {
+/*header label {
 	display: none;
 	width: 30px;
 	height: 30px;
@@ -27,7 +27,7 @@ header label {
 header label:hover {
 	background: rgba(0,0,0,0.3);
 	cursor: pointer;
-}
+}*/
 
 /* main {
 	text-align: justify;
@@ -47,7 +47,7 @@ header label:hover {
 	/*justify-content: center;*/
 }
 .menu li {
-	border-right: 1px solid #fff;
+	border-right: 0px solid #fff;
 	/*text-align: center;
 	flex-glow: 1;*/ 
 }

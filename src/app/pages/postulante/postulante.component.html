@@ -1,454 +1,382 @@
+<div class="content">
+    <h3 class="mt-5">Registro de postulante</h3>
 
-<!-- <h1 class="text-center">Registro de Postulante</h1> -->
-
-<form class="principal" autocomplete="off" (ngSubmit)="guardar()" [formGroup]="forma">
-
+    <!--<h3>Mis Datos: </h3>
+    <div>
+        <h2>listarPostulantes()</h2>
+        <ul>
+            <li *ngFor="let item of data">
+                {{item.apellidom}}
+                {{item.apellidop}}
+                {{item.nombres}}
+                {{item.dni}}
+                {{item.telefono}}
+                {{item.email}}
+            </li>
+        </ul>
+    </div>-->
     
-    <h3>Mis Datos: </h3>
-    
-    <div>
-        <div class="form-group row ">                  
-           
-            <div class="col-10 col-md-4">
-                <label class="col-10 col-form-label">Apellido Paterno</label>
-                <input class="form-control" formControlName="apellidopaterno" type="text" placeholder="Apellido Paterno" [class.is-valid]="apellidopaternoValido" [class.is-invalid]="apellidopaternoNoValido">
-                <small *ngIf="apellidopaternoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
+    <div class="row g-5">
+        <div class="col-xl-12">
+            <div class="row gx-3 gy-4">
+                <form class="row g-4 needs-validation" (ngSubmit)="guardar()" novalidate>
+                    <div class="col-sm-6 col-md-4">
+                        <label class="form-label">Apellido Paterno</label>
+                        <input class="form-control" formControlName="apellidopaterno" type="text" placeholder="Apellido Paterno"
+                            [class.is-valid]="apellidopaternoValido" [class.is-invalid]="apellidopaternoNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <label class="form-label">Apellido Materno</label>
+                        <input class="form-control " formControlName="apellidomaterno" type="text" placeholder="Apellido Materno"
+                            [class.is-valid]="apellidomaternoValido" [class.is-invalid]="apellidomaternoNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <label class="form-label">Nombre</label>
+                        <input class="form-control" formControlName="nombre" type="text" placeholder="Nombre"
+                            [class.is-valid]="nombreValido" [class.is-invalid]="nombreNoValido">
+                    </div>
                 
-            </div>
-
-            <div class="col-10 col-md-4">
-                <label class="col-10 col-form-label">Apellido Materno</label>
-                <input class="form-control " formControlName="apellidomaterno" type="text" placeholder="Apellido Materno" [class.is-valid]="apellidomaternoValido" [class.is-invalid]="apellidomaternoNoValido">
-                <small *ngIf="apellidomaternoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            
-            <div class="col-10 col-md-4">
-                <label class="col-10 col-form-label">Nombre</label>
-                <input class="form-control" formControlName="nombre" type="text"  placeholder="Nombre" [class.is-valid]="nombreValido" [class.is-invalid]="nombreNoValido">
-                <small *ngIf="nombreNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-        </div>
-
-        <div class="form-group row">            
-            <div class="col-5 col-md-3 ">
-                <label class="col-12 col-form-label">F. Nacimiento</label>                
-                <input class="form-control" formControlName="fechanacimiento" type="date" [class.is-valid]="fechanacimientoValido" [class.is-invalid]="fechanacimientoNoValido"  >
-                <small  *ngIf="fechanacimientoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-5 col-md-3">
-                <label class="col-6 col-form-label">Sexo</label>
-                <input class="form-control" formControlName="sexo" type="text"  placeholder="Sexo" [class.is-valid]="sexoValido" [class.is-invalid]="sexoNoValido" >
-                <small *ngIf="sexoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-5 col-md-3">
-                <label class="col-6 col-form-label">DNI</label>
-                <input class="form-control" formControlName="dni" type="text"  placeholder="DNI" [class.is-valid]="dniValido" [class.is-invalid]="dniNoValido">
-                <small *ngIf="dniNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-5 col-md-3">
-                <label class="col-6 col-form-label">Brevete</label>
-                <input class="form-control" formControlName="brevete" type="text" placeholder="Brevete" [class.is-valid]="breveteValido" [class.is-invalid]="breveteNoValido" >
-                <small *ngIf="breveteNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-        </div>
-
-        <div class="form-group row">            
-            <div class="col-1">
-                <label class="col-4 col-form-label">Telefono</label>
-                <input class="form-control" formControlName="codigopais" type="text" [class.is-valid]="codigopaisValido" [class.is-invalid]="codigopaisNoValido" >
-                <small *ngIf="codigopaisNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-3">
-                <label class="col-6 col-form-label">&nbsp;</label>
-                <input class="form-control" formControlName="numerotelefono" type="text" [class.is-valid]="numerotelefonoValido" [class.is-invalid]="numerotelefonoNoValido">
-                <small *ngIf="numerotelefonoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-7">
-                <label class="col-12 col-form-label">E-mail</label>
-                <input class="form-control" formControlName="email" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="emailValido" [class.is-invalid]="emailNoValido">
-                <small *ngIf="emailNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-3">
-                <label class="col-3 col-form-label">Pais</label>
-                    <select class="form-control" formControlName="cargo1" (change)="seleccionarCargo1($event)" [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido" >
-                        <option value="">Seleccione</option>
-                        <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
-                    </select>
-                <small *ngIf="paisNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-        </div>
-
-        <div class="form-group row ">                  
-           
-            <div class="col-3">
-                <label class="col-12 col-form-label">Departamento</label>
-                    <select class="form-control" formControlName="cargo1" (change)="seleccionarCargo1($event)" [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido" >
-                        <option value="">Seleccione</option>
-                        <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
-                    </select>
-                <small *ngIf="departamentoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-
-            <div class="col-3">
-                <label class="col-12 col-form-label">Provincia</label>
-                    <select class="form-control" formControlName="cargo1" (change)="seleccionarCargo1($event)" [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido" >
-                        <option value="">Seleccione</option>
-                        <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
-                    </select>
-                <small *ngIf="provinciaNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            
-            <div class="col-3">
-                <label class="col-12 col-form-label">Distrito</label>
-                    <select class="form-control" formControlName="cargo1" (change)="seleccionarCargo1($event)" [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido" >
-                        <option value="">Seleccione</option>
-                        <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
-                    </select>
-                <small *ngIf="distritoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-        </div>
-        <div class="form-group row " >            
-            <div class="col-10">
-                <label class="col-10 col-form-label">Direccion</label>
-                <input class="form-control" formControlName="direccion" type="text" [class.is-valid]="direccionValido" [class.is-invalid]="direccionNoValido" >
-                <small *ngIf="direccionNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>           
-            
-        </div>   
-
-    </div>  
-    <br>
-    <br>
-    <h3>Mi Grado Academico: </h3>
-    <hr>
-    <div>
-        <div class="form-group row ">                  
-           
-            <div class="col-6 col-md-4">
-                <label class="col-12 col-form-label">Grado Academico</label>
-                <input class="form-control" formControlName="gradoacademico" type="text" [class.is-valid]="gradoacademicoValido" [class.is-invalid]="gradoacademicoNoValido" >
-                <small *ngIf="gradoacademicoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-
-            <div class="col-6 col-md-4">
-                <label class="col-12 col-form-label">Universidad</label>
-                <input class="form-control" formControlName="universidad" type="text" [class.is-valid]="universidadValido" [class.is-invalid]="universidadNoValido" >
-                <small *ngIf="universidadNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            
-            <div class="col-10 col-md-4">
-                <label class="col-12 col-form-label">Carrera, Especialidad</label>
-                <input class="form-control" formControlName="carrera" type="text" [class.is-valid]="carreraValido" [class.is-invalid]="carreraNoValido">
-                <small *ngIf="carreraNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-        </div>
-
-        <div class="form-group row">
-            <div class="col-4 col-md-2">
-                <label class="col-12 col-form-label">Fecha inicio</label>
-                <input class="form-control" formControlName="fechainicio" type="date" [class.is-valid]="fechainicioValido" [class.is-invalid]="fechainicioNoValido">
-                <small *ngIf="fechainicioNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>
-            <div class="col-4 col-md-2">
-                <label class="col-12 col-form-label">Fecha egreso</label>
-                <input class="form-control" formControlName="fechaegreso" type="date" [class.is-valid]="fechaegresoValido" [class.is-invalid]="fechaegresoNoValido">
-                <small *ngIf="fechaegresoNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>
-            </div>        
-            <div class="col-4 col-md-2 form-check">
-                <br>
-                <br>
-                <input class="form-check-input" type="checkbox" id="encurso" name="encurso" >
                 
-                <label class="form-check-label">&nbsp; &nbsp; En curso</label>
-                
-            </div>  
-        </div>
-
-       
-
-          
-     
-
-    </div> 
-    <br>
-    <br>
-    <h3>Mi Experiencia: </h3>
-    <hr>
-    <div>
-        <div class="form-group row ">                  
-           
-            <div class="col-5 col-md-2">     
-                <input class="form-control" formControlName="fechaempezoatrabajar" type="date" [class.is-valid]="fechaempezoatrabajarValido" [class.is-invalid]="fechaempezoatrabajarNoValido">   
-                <small *ngIf="fechaempezoatrabajarNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small>             
-             </div>
-            <div class="col-7 col-md-4">
-                <label class="col-12 col-form-label">Cuando empezo a trabajar?</label>
-            </div>        
-        </div>
-
-        <div class="form-group row ">            
-            <div class="col-5 col-md-2">                
-                <input class="form-control" type="text" formControlName="examinar" placeholder="examinar" [class.is-valid]="examinarValido" [class.is-invalid]="examinarNoValido">
-                <small *ngIf="examinarNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-            </div>
-            <div class="col-4 col-md-4">                
-                <input type="file" id="examinarseleccion" style="color: transparent" formControlName="examinarseleccion" [class.is-valid]="examinarseleccionValido" [class.is-invalid]="examinarseleccionNoValido">
-                <small *ngIf="examinarseleccionNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-            </div>            
-            
-        </div>   
-        
-        <div class="form-group row ">
-            <div class="col-12">
-                <label class="col-12 col-form-label">Resuma su Experiencia, coloque los aspectos mas significativos y recientes de su Experiencia laboral</label>                
-                <textarea class="form-control" formControlName="resumen" rows="5" [class.is-valid]="resumenValido" [class.is-invalid]="resumenNoValido" ></textarea>
-                <small *ngIf="resumenNoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-            </div>
-            
-               
-        </div>
-
-        <div class="form-group row">
-            <div class="col-12">
-                <label class="col-12 col-form-label">Registre sus tres ultimas Experiencias laborales</label>                
-                
-            </div>
-            <div class="col-12">
-                <ul class="nav nav-tabs">
-                    <li class="active"><a data-toggle="tab" href="#exp1">1</a></li>
-                    <li><a data-toggle="tab" href="#exp2">2</a></li>
-                    <li><a data-toggle="tab" href="#exp3">3</a></li>
-                  </ul>
-                
-                  <div class="tab-content">
-                    <div id="exp1" class="tab-pane fade in active">
-                        <br>
-                      <div class="form-group row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <label class="col-6 ">Puesto</label>
-                                    <input class="form-control" formControlName="puesto1" type="text" [class.is-valid]="puesto1Valido" [class.is-invalid]="puesto1NoValido">
-                                    <small *ngIf="puesto1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <label class="col-12 col-form-label">Fecha Inicio</label>
-                                    <input class="form-control" formControlName="fechainicio1" type="date" [class.is-valid]="fechainicio1Valido" [class.is-invalid]="fechainicio1NoValido">
-                                    <small *ngIf="fechainicio1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                                <div class="col-6">
-                                    <label class="col-12 col-form-label">Fecha Fin</label>
-                                    <input class="form-control" formControlName="fechafin1" type="date" [class.is-valid]="fechafin1Valido" [class.is-invalid]="fechafin1NoValido">
-                                    <small *ngIf="fechafin1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-7 col-md-6">
-                                    <label class="col-12 col-form-label">Jefe de referencia</label>
-                                    <input class="form-control" formControlName="jefereferencia1" type="text" [class.is-valid]="jefereferencia1Valido" [class.is-invalid]="jefereferencia1NoValido">
-                                    <small *ngIf="jefereferencia1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                    
-                                <div class="col-5 col-md-6">
-                                    <label class="col-12 col-form-label">Cargo</label>
-                                    <select class="form-control" formControlName="cargo1" (change)="seleccionarCargo1($event)" [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido" >
-                                        <option value="">Seleccione</option>
-                                        <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
-                                    </select>
-                                    <small *ngIf="cargo1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-3">
-                                    <label class="col-12 col-form-label">Telefono</label>
-                                    <input class="form-control" formControlName="telefono1" type="text" [class.is-valid]="telefono1Valido" [class.is-invalid]="telefono1NoValido">
-                                    <small *ngIf="telefono1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                    
-                                <div class="col-9">
-                                    <label class="col-12 col-form-label">E-mail</label>
-                                    <input class="form-control" formControlName="email1" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="email1Valido" [class.is-invalid]="email1NoValido">
-                                    <small *ngIf="email1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            
+                    <div class="col-sm-6 col-md-3 ">
+                        <label class="form-label">F. Nacimiento</label>
+                        <input class="form-control" formControlName="fechanacimiento" type="date"
+                            [class.is-valid]="fechanacimientoValido" [class.is-invalid]="fechanacimientoNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Sexo</label>
+                        <select class="form-select" formControlName="sexo" [required]="true">
+                                <option value="" [selected]="true">Seleccionar</option>
+                                <option value="M">Masculino</option>
+                                <option value="F">Femenino</option>
+                        </select> 
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Num Doc Identidad</label>
+                        <input class="form-control" formControlName="dni" type="text" placeholder="45483322" [class.is-valid]="dniValido"
+                            [class.is-invalid]="dniNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Brevete</label>
+                        <input class="form-control" formControlName="brevete" type="text" placeholder="#"
+                            [class.is-valid]="breveteValido" [class.is-invalid]="breveteNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-1">
+                        <label class="form-label">Cod Pais</label>
+                        <input class="form-control" formControlName="codigopais" type="text" [class.is-valid]="codigopaisValido"
+                            [class.is-invalid]="codigopaisNoValido" placeholder="+51">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Num Telefono</label>
+                        <input class="form-control" formControlName="numerotelefono" type="text" placeholder="990 676900"
+                            [class.is-valid]="numerotelefonoValido" [class.is-invalid]="numerotelefonoNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-5">
+                        <label class="form-label">E-mail</label>
+                        <div class="input-group has-validation">
+                            <span class="input-group-text" id="inputGroupPrepend">@</span>
+                            <input class="form-control" placeholder="postulante@gmail.com" id="validationCustomUsername" aria-describedby="inputGroupPrepend" formControlName="email" type="text"
+                                pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="emailValido"
+                                [class.is-invalid]="emailNoValido" [required]="true">
+                            <div class="invalid-feedback">Ingrese un email válido.</div>
                         </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <label class="col-12 col-form-label">Breve descripción:</label>                
-                                    <textarea class="form-control" formControlName="descripcion1" rows="14" [class.is-valid]="descripcion1Valido" [class.is-invalid]="descripcion1NoValido"></textarea>
-                                    <small *ngIf="descripcion1NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Pais</label>
+                        <select class="form-select" formControlName="pais" [required]="true">
+                            <option value="">Seleccionar</option>
+                            <option value="01">Peru</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Departamento</label>
+                        <select class="form-select" formControlName="departamento" (change)="seleccionarCargo1($event)"
+                            [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido">
+                            <option value="">Seleccionar</option>
+                            <option *ngFor="let item of dataDepartamentos" [value]="item.id">{{item.name}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Provincia</label>
+                        <select class="form-select" formControlName="provincia" (change)="seleccionarCargo1($event)"
+                            [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido">
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Distrito</label>
+                        <select class="form-select" formControlName="cargo1" (change)="seleccionarCargo1($event)"
+                            [class.is-valid]="cargo1Valido" [class.is-invalid]="cargo1NoValido">
+                            <option value="">Seleccione</option>
+                            <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-6 col-md-7">
+                        <label class="col-10 col-form-label">Direccion</label>
+                        <input class="form-control" formControlName="direccion" placeholder="Jr. Los Eucaliptos 672 Lima, Lima, Peru" type="text" [class.is-valid]="direccionValido"
+                            [class.is-invalid]="direccionNoValido">
+                    </div>
+
+                    <div class="h4 pb-2 mb-3 border-bottom border-secondary">
+                        Mi grado académico:
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <label class="form-label">Grado Academico</label>
+                        <input class="form-control" formControlName="gradoacademico" type="text" placeholder="Ingeniero"
+                            [class.is-valid]="gradoacademicoValido" [class.is-invalid]="gradoacademicoNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <label class="form-label">Universidad</label>
+                        <input class="form-control" formControlName="universidad" type="text" placeholder="Universidad Ejemplo"
+                            [class.is-valid]="universidadValido" [class.is-invalid]="universidadNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-4">
+                        <label class="form-label">Carrera, Especialidad</label>
+                        <input class="form-control" formControlName="carrera" type="text" placeholder="Administración de empresas" [class.is-valid]="carreraValido"
+                            [class.is-invalid]="carreraNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Fecha inicio</label>
+                        <input class="form-control" formControlName="fechainicio" type="date"
+                            [class.is-valid]="fechainicioValido" [class.is-invalid]="fechainicioNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Fecha egreso</label>
+                        <input class="form-control" formControlName="fechaegreso" type="date"
+                            [class.is-valid]="fechaegresoValido" [class.is-invalid]="fechaegresoNoValido">
+                    </div>
+                    <div class="col-4 col-md-12">
+                        <input class="form-check-input" type="checkbox" id="encurso" name="encurso">
+                        <label class="form-check-label">&nbsp; En curso</label>
+                    </div>
+
+
+                    <div class="h4 pb-2 mb-3 border-bottom border-secondary">
+                        Mi experencia:
+                    </div>
+                    <div class="col-sm-6 col-md-3">
+                        <label class="form-label">Cuando empezo a trabajar?</label>
+                        <input class="form-control" formControlName="fechaempezoatrabajar" type="date"
+                            [class.is-valid]="fechaempezoatrabajarValido" [class.is-invalid]="fechaempezoatrabajarNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+                        <label class="form-label">Seleccionar en Formato PDF</label>
+                        <input class="form-control" type="file" id="examinarseleccion" formControlName="examinarseleccion"
+                            [class.is-valid]="examinarseleccionValido" [class.is-invalid]="examinarseleccionNoValido">
+                    </div>
+                    <div class="col-sm-6 col-md-12">
+                        <label class="col-12 col-form-label">Resuma su experiencia, coloque los aspectos mas significativos y
+                            recientes de su Experiencia laboral</label>
+                        <textarea class="form-control" formControlName="resumen" rows="5" [class.is-valid]="resumenValido"
+                            [class.is-invalid]="resumenNoValido" placeholder="Escriba un resumen de su experiencia laboral.."></textarea>
+                    </div>
+
+                    <div class="col-sm-6 col-md-12">
+                        <label class="form-label">Registre sus 3 últimas Experiencias laborales</label>
+                    </div>
+                    <div>
+                        <nav>
+                            <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">Experiencia 1</button>
+                                <button class="nav-link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">Experiencia 2</button>
+                                <button class="nav-link" id="nav-contact-tab" data-bs-toggle="tab" data-bs-target="#nav-contact" type="button" role="tab" aria-controls="nav-contact" aria-selected="false">Experiencia 3</button>
+                            </div>
+                        </nav>
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabindex="0">
+                                <div class="row col-12">
+                                    <div class="col-6 row gx-3 gy-4">
+                                        <div class="col-sm-6 col-md-12">
+                                            <label class="form-label">Puesto</label>
+                                            <input class="form-control" formControlName="puesto1" type="text" placeholder="Asistente Administrativo"
+                                                [class.is-valid]="puesto1Valido" [class.is-invalid]="puesto1NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Fecha Inicio</label>
+                                            <input class="form-control" formControlName="fechainicio1" type="date"
+                                                [class.is-valid]="fechainicio1Valido"
+                                                [class.is-invalid]="fechainicio1NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Fecha Fin</label>
+                                            <input class="form-control" formControlName="fechafin1" type="date"
+                                                [class.is-valid]="fechafin1Valido" [class.is-invalid]="fechafin1NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Jefe de referencia</label>
+                                            <input class="form-control" formControlName="jefereferencia1" placeholder="PMP. Viviana Murcia" type="text"
+                                                [class.is-valid]="jefereferencia1Valido"
+                                                [class.is-invalid]="jefereferencia1NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Cargo</label>
+                                            <select class="form-select" formControlName="cargo1"
+                                                (change)="seleccionarCargo1($event)" [class.is-valid]="cargo1Valido"
+                                                [class.is-invalid]="cargo1NoValido">
+                                                <option value="">Seleccionar</option>
+                                                <option *ngFor="let cargos1 of Cargos">{{cargos1}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 col-md-5">
+                                            <label class="form-label">Telefono</label>
+                                            <input class="form-control" formControlName="telefono1" type="text"
+                                                [class.is-valid]="telefono1Valido" [class.is-invalid]="telefono1NoValido" placeholder="+51 990 893417">
+                                        </div>
+                                        <div class="col-sm-6 col-md-7">
+                                            <label class="form-label">E-mail</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input class="form-control" placeholder="vmurcia@gmail.com" id="validationCustomUsername" aria-describedby="inputGroupPrepend" formControlName="email1" type="text"
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="email1Valido"
+                                                    [class.is-invalid]="email1NoValido">
+                                                <div class="invalid-feedback">Ingrese un email válido.</div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="col-6 row gx-3 gy-4">
+                                        <div class="col-sm-6 col-md-12">
+                                            <label class="col-12 col-form-label">Breve descripción:</label>
+                                            <textarea class="form-control" placeholder="Digite aquí una breve reseña del puesto desempeñado..." formControlName="descripcion1" rows="14"
+                                                [class.is-valid]="descripcion1Valido"
+                                                [class.is-invalid]="descripcion1NoValido"></textarea>
+                                        </div>
+                                    </div>
                                 </div>
-                                
-                                   
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab" tabindex="0">
+                                <div class="row col-12">
+                                    <div class="col-6 row gx-3 gy-4">
+                                        <div class="col-sm-6 col-md-12">
+                                            <label class="form-label">Puesto</label>
+                                            <input class="form-control" formControlName="puesto2" type="text" placeholder="Asistente Administrativo"
+                                                [class.is-valid]="puesto2Valido" [class.is-invalid]="puesto2NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Fecha Inicio</label>
+                                            <input class="form-control" formControlName="fechainicio2" type="date"
+                                                [class.is-valid]="fechainicio2Valido"
+                                                [class.is-invalid]="fechainicio2NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Fecha Fin</label>
+                                            <input class="form-control" formControlName="fechafin2" type="date"
+                                                [class.is-valid]="fechafin2Valido" [class.is-invalid]="fechafin2NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Jefe de referencia</label>
+                                            <input class="form-control" formControlName="jefereferencia2" placeholder="PMP. Viviana Murcia" type="text"
+                                                [class.is-valid]="jefereferencia2Valido"
+                                                [class.is-invalid]="jefereferencia2NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Cargo</label>
+                                            <select class="form-select" formControlName="cargo2"
+                                                (change)="seleccionarCargo1($event)" [class.is-valid]="cargo2Valido"
+                                                [class.is-invalid]="cargo2NoValido">
+                                                <option value="">Seleccionar</option>
+                                                <option *ngFor="let cargos2 of Cargos">{{cargos2}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 col-md-5">
+                                            <label class="form-label">Telefono</label>
+                                            <input class="form-control" formControlName="telefono2" type="text"
+                                                [class.is-valid]="telefono2Valido" [class.is-invalid]="telefono2NoValido" placeholder="+51 990 893417">
+                                        </div>
+                                        <div class="col-sm-6 col-md-7">
+                                            <label class="form-label">E-mail</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input class="form-control" placeholder="vmurcia@gmail.com" id="validationCustomUsername" aria-describedby="inputGroupPrepend" formControlName="email2" type="text"
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="email2Valido"
+                                                    [class.is-invalid]="email2NoValido">
+                                                <div class="invalid-feedback">Ingrese un email válido.</div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="col-6 row gx-3 gy-4">
+                                        <div class="col-sm-6 col-md-12">
+                                            <label class="col-12 col-form-label">Breve descripción:</label>
+                                            <textarea class="form-control" placeholder="Digite aquí una breve reseña del puesto desempeñado..." formControlName="descripcion2" rows="14"
+                                                [class.is-valid]="descripcion2Valido"
+                                                [class.is-invalid]="descripcion2NoValido"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab" tabindex="0">
+                                <div class="row col-12">
+                                    <div class="col-6 row gx-3 gy-4">
+                                        <div class="col-sm-6 col-md-12">
+                                            <label class="form-label">Puesto</label>
+                                            <input class="form-control" formControlName="puesto3" type="text" placeholder="Asistente Administrativo"
+                                                [class.is-valid]="puesto3Valido" [class.is-invalid]="puesto3NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Fecha Inicio</label>
+                                            <input class="form-control" formControlName="fechainicio3" type="date"
+                                                [class.is-valid]="fechainicio3Valido"
+                                                [class.is-invalid]="fechainicio3NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Fecha Fin</label>
+                                            <input class="form-control" formControlName="fechafin3" type="date"
+                                                [class.is-valid]="fechafin3Valido" [class.is-invalid]="fechafin3NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Jefe de referencia</label>
+                                            <input class="form-control" formControlName="jefereferencia3" placeholder="PMP. Viviana Murcia" type="text"
+                                                [class.is-valid]="jefereferencia3Valido"
+                                                [class.is-invalid]="jefereferencia3NoValido">
+                                        </div>
+                                        <div class="col-sm-6 col-md-6">
+                                            <label class="form-label">Cargo</label>
+                                            <select class="form-select" formControlName="cargo3"
+                                                (change)="seleccionarCargo3($event)" [class.is-valid]="cargo3Valido"
+                                                [class.is-invalid]="cargo3NoValido">
+                                                <option value="">Seleccionar</option>
+                                                <option *ngFor="let cargos3 of Cargos">{{cargos3}}</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-sm-6 col-md-5">
+                                            <label class="form-label">Telefono</label>
+                                            <input class="form-control" formControlName="telefono3" type="text"
+                                                [class.is-valid]="telefono3Valido" [class.is-invalid]="telefono3NoValido" placeholder="+51 990 893417">
+                                        </div>
+                                        <div class="col-sm-6 col-md-7">
+                                            <label class="form-label">E-mail</label>
+                                            <div class="input-group has-validation">
+                                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                                                <input class="form-control" placeholder="vmurcia@gmail.com" id="validationCustomUsername" aria-describedby="inputGroupPrepend" formControlName="email3" type="text"
+                                                    pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="email3Valido"
+                                                    [class.is-invalid]="email3NoValido">
+                                                <div class="invalid-feedback">Ingrese un email válido.</div>
+                                            </div>
+                                        </div>   
+                                    </div>
+                                    <div class="col-6 row gx-3 gy-4">
+                                        <div class="col-sm-6 col-md-12">
+                                            <label class="col-12 col-form-label">Breve descripción:</label>
+                                            <textarea class="form-control" placeholder="Digite aquí una breve reseña del puesto desempeñado..." formControlName="descripcion3" rows="14"
+                                                [class.is-valid]="descripcion3Valido"
+                                                [class.is-invalid]="descripcion3NoValido"></textarea>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <div id="exp2" class="tab-pane fade">
-                        <br>
-                      <div class="form-group row">
-                        <div class="col-12 col-md-6">
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <label class="col-6 ">Puesto</label>
-                                <input class="form-control" formControlName="puesto2" type="text" [class.is-valid]="puesto2Valido" [class.is-invalid]="puesto2NoValido">
-                                <small *ngIf="puesto2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
+                    <div class="col-12 gy-6 mb-5">
+                        <div class="row g-3 justify-content-end">
+                            <div class="col-auto">
+                                <button type="submit" class="btn btn-primary btn-sm px-5">Guardar</button>
                             </div>
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <label class="col-12 col-form-label">Fecha Inicio</label>
-                                    <input class="form-control" formControlName="fechainicio2" type="date" [class.is-valid]="fechainicio2Valido" [class.is-invalid]="fechainicio2NoValido">
-                                    <small *ngIf="fechainicio2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                                <div class="col-6">
-                                    <label class="col-12 col-form-label">Fecha Fin</label>
-                                    <input class="form-control" formControlName="fechafin2" type="date" [class.is-valid]="fechafin2Valido" [class.is-invalid]="fechafin2NoValido">
-                                    <small *ngIf="fechafin2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-6">
-                                    <label class="col-12 col-form-label">Jefe de referencia</label>
-                                    <input class="form-control" formControlName="jefereferencia2" type="text" [class.is-valid]="jefereferencia2Valido" [class.is-invalid]="jefereferencia2NoValido">
-                                    <small *ngIf="jefereferencia2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                    
-                                <div class="col-6">
-                                    <label class="col-12 col-form-label">Cargo</label>
-                                    <select class="form-control" formControlName="cargo2" (change)="seleccionarCargo2($event)" [class.is-valid]="cargo2Valido" [class.is-invalid]="cargo2NoValido" >
-                                        <option value="">Seleccione</option>
-                                        <option *ngFor="let cargos2 of Cargos">{{cargos2}}</option>
-                                    </select>
-                                    <small *ngIf="cargo2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="col-3">
-                                    <label class="col-12 col-form-label">Telefono</label>
-                                    <input class="form-control" formControlName="telefono2" type="text" [class.is-valid]="telefono2Valido" [class.is-invalid]="telefono2NoValido">
-                                    <small *ngIf="telefono2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                    
-                                <div class="col-9">
-                                    <label class="col-12 col-form-label">E-mail</label>
-                                    <input class="form-control" formControlName="email2" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="email2Valido" [class.is-invalid]="email2NoValido">
-                                    <small *ngIf="email2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                            </div>
-                            
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <div class="form-group row">
-                                <div class="col-12">
-                                    <label class="col-12 col-form-label">Breve descripción:</label>                
-                                    <textarea class="form-control" formControlName="descripcion2" rows="14" [class.is-valid]="descripcion2Valido" [class.is-invalid]="descripcion2NoValido"></textarea>
-                                    <small *ngIf="descripcion2NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                </div>
-                                
-                                   
+                            <div class="col-auto">
+                                <a href="#" class="btn btn-outline-secondary btn-sm px-5 px-sm-5 ">Cancelar</a>
                             </div>
                         </div>
                     </div>
-                    </div>
-                    <div id="exp3" class="tab-pane fade">
-                        <br>
-                        <div class="form-group row">
-                            <div class="col-12 col-md-6">
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <label class="col-6 ">Puesto</label>
-                                    <input class="form-control" formControlName="puesto3" type="text" [class.is-valid]="puesto3Valido" [class.is-invalid]="puesto3NoValido">
-                                    <small *ngIf="puesto3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-6">
-                                        <label class="col-12 col-form-label">Fecha Inicio</label>
-                                        <input class="form-control" formControlName="fechainicio3" type="date" [class.is-valid]="fechainicio3Valido" [class.is-invalid]="fechainicio3NoValido">
-                                        <small *ngIf="fechainicio3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                                    <div class="col-6">
-                                        <label class="col-12 col-form-label">Fecha Fin</label>
-                                        <input class="form-control" formControlName="fechafin3" type="date" [class.is-valid]="fechafin3Valido" [class.is-invalid]="fechafin3NoValido">
-                                        <small *ngIf="fechafin3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-6">
-                                        <label class="col-12 col-form-label">Jefe de referencia</label>
-                                        <input class="form-control" formControlName="jefereferencia3" type="text" [class.is-valid]="jefereferencia3Valido" [class.is-invalid]="jefereferencia3NoValido">
-                                        <small *ngIf="jefereferencia3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                        
-                                    <div class="col-6">
-                                        <label class="col-12 col-form-label">Cargo</label>
-                                        <select class="form-control" formControlName="cargo3" (change)="seleccionarCargo3($event)" [class.is-valid]="cargo3Valido" [class.is-invalid]="cargo3NoValido" >
-                                            <option value="">Seleccione</option>
-                                            <option *ngFor="let cargos3 of Cargos">{{cargos3}}</option>
-                                        </select>
-                                        <small *ngIf="cargo3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <div class="col-3">
-                                        <label class="col-12 col-form-label">Telefono</label>
-                                        <input class="form-control" formControlName="telefono3" type="text" [class.is-valid]="telefono3Valido" [class.is-invalid]="telefono3NoValido">
-                                        <small *ngIf="telefono3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                        
-                                    <div class="col-9">
-                                        <label class="col-12 col-form-label">E-mail</label>
-                                        <input class="form-control" formControlName="email3" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" [class.is-valid]="email3Valido" [class.is-invalid]="email3NoValido">
-                                        <small *ngIf="email3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                                </div>
-                                
-                            </div>
-                            <div class="col-12 col-md-6">
-                                <div class="form-group row">
-                                    <div class="col-12">
-                                        <label class="col-12 col-form-label">Breve descripción:</label>                
-                                        <textarea class="form-control" formControlName="descripcion3" rows="14" [class.is-valid]="descripcion3Valido" [class.is-invalid]="descripcion3NoValido" ></textarea>
-                                        <small *ngIf="descripcion3NoValido" class="form-text text-danger animate__animated animate__backInLeft">Este campo es obligatorio</small> 
-                                    </div>
-                                    
-                                       
-                                </div>
-                            </div>
-                        </div>
-                      <div class="form-group row">
-                        
-                            
-                                
-                        </div>
-                    </div>
-                  </div>
+                </form>
             </div>
-            
-               
         </div>
-     
-
-    </div> 
-
-
-    <div class="form-group row">
-        <div class="input-group col-6">
-            <button type="submit" class="btn btn-outline-primary btn-block">
-             Guardar
-            </button>
-        </div>
-        <div class="input-group col-6">
-            <button type="submit" class="btn btn-outline-primary btn-block">
-             Cancelar
-            </button>
-        </div>
-        
-    </div>
-
-</form>
+    </div>        
+</div>
