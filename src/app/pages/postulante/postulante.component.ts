@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators} from '@angular/forms';
 import { ApiServicePostulante } from 'src/app/services/api.service.postulante';
 import { ApiServiceUbigeo } from 'src/app/services/api.service.ubigeo';
-import { Form } from '@angular/forms';
-import { NgForm } from '@angular/forms';
+import { Postulante } from 'src/app/models/postulante.model';
 
 @Component({
   selector: 'app-postulante',
@@ -17,6 +16,7 @@ export class PostulanteComponent implements OnInit {
   dataDepartamentos: any[] = [];
 
   public Postulante={
+    id:1,
     apellidopaterno:"",
     apellidomaterno:"",
     nombres:"",
@@ -72,7 +72,7 @@ export class PostulanteComponent implements OnInit {
       private apiServicePostulante: ApiServicePostulante,
       private apiServiceUbigeo: ApiServiceUbigeo
       ){
-    }
+  }
 
   ngOnInit(): void {
     this.listarPostulantes();
@@ -82,7 +82,10 @@ export class PostulanteComponent implements OnInit {
   guardar(){
     console.log(this.Postulante);
     console.log(this.Postulante.nombres);
-    console.log(this.Postulante.brevete);
+    
+    this.apiServicePostulante.addPostulante(this.Postulante).subscribe(data =>{
+      console.log("data: "+this.data);
+    });
   }
 
   listarPostulantes(){

@@ -1,10 +1,60 @@
 import { OnInit } from "@angular/core";
 
 export interface Postulante {
-
-    id: number;
-    apellidoPaterno: string;
-    apellidoMaterno: string;
+    idPostulante: number;
+    apellidop: string;
+    apellidom: string;
     nombres: string;
-    
+    fechaNacimiento: Date;
+    sexo: string;
+    dni: string;
+    brevete: string;
+    telefono: string;
+    email: string;
+    direccion: string;
+    departmentId: string;
+    provinceId: string;
+    districtId: string;
+
+    /*codigopais:string;
+    numerotelefono:string;
+    email:string;
+    pais:string;
+    departamento:string;
+    provincia:string;
+    distrito:string;
+    direccion:string;
+    gradoacademico:string;
+    universidad:string;
+    carrera:string;
+    fechainicio:Date;
+    fechaegreso:Date;
+    encurso:string;
+    fechaempezoatrabajar:Date;
+    examinarseleccion:string;
+    resumen:string;
+    puesto1:string;
+    fechainicio1:Date;
+    fechafin1:Date;
+    jefereferencia1:string;
+    cargo1:string;
+    telefono1:string;
+    email1:string;
+    descripcion1:string;
+    puesto2:string;
+    fechainicio2:Date;
+    fechafin2:Date;
+    jefereferencia2:string;
+    cargo2:string;
+    telefono2:string;
+    email2:string;
+    descripcion2:string;
+    puesto3:string;
+    fechainicio3:Date;
+    fechafin3:Date;
+    jefereferencia3:string;
+    cargo3:string;
+    telefono3:string;
+    email3:string;
+    descripcion3:string;*/
 }
