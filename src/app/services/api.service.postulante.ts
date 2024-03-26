@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 export class ApiServicePostulante {
 
   private urlApiPostulanteListar="http://localhost:9095/api/postulantes/listar";
-  private urlApiPostulanteGetId="http://localhost:9095/api/postulantes/getId"
+  private urlApiPostulanteGetId="http://localhost:9095/api/postulantes/getId";
   private urlApiPostulanteRegistrar="http://localhost:9095/api/postulantes/registrar";
   private urlApiPostulanteModificar="http://localhost:9095/api/postulantes/modificar";
   private urlApiPostulanteEliminar="http://localhost:9095/api/postulantes/eliminar";
@@ -19,5 +19,4 @@ export class ApiServicePostulante {
   public listarPostulante(): Observable<any>{
     return this.http.get(this.urlApiPostulanteListar);
   }
-
 }
